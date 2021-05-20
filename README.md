@@ -1,4 +1,4 @@
-# _Person Service - WebApi_ - Sample WebAPI
+# _Person Service - WebApi_ 
 
 ## Resources
    - Java JDK 8
