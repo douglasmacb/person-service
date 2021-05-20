@@ -33,7 +33,7 @@ public class PersonService {
         return people.stream().map(PersonDTO::new).collect(Collectors.toList());
     }
 
-    public PersonDTO findPersonById(Long id) {
+    public PersonDTO findPersonById(Long id) throws BusinessException {
         Optional<Person> person = repository.findById(id);
         if(person.isPresent()) {
             return new PersonDTO(person.get());
@@ -41,7 +41,7 @@ public class PersonService {
         throw new BusinessException(ErrorType.PERROR_002.getMessage(), ErrorType.PERROR_002.getLabel(), HttpStatus.NOT_FOUND);
     }
 
-    public void deletePersonById(Long id) {
+    public void deletePersonById(Long id) throws BusinessException {
         Optional<Person> person = repository.findById(id);
         if(person.isPresent()) {
             repository.delete(person.get());
@@ -50,7 +50,7 @@ public class PersonService {
         }
     }
 
-    public PersonDTO updatePerson(Long id, PersonForm form) {
+    public PersonDTO updatePerson(Long id, PersonForm form) throws BusinessException {
         Optional<Person> person = repository.findById(id);
         if(person.isPresent()) {
             Person updatedPerson = person.get();
