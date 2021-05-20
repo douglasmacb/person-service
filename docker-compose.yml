@@ -1,0 +1,24 @@
+version: '3.1'
+services:
+  mysqldb:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: jluQcSjHX5eDaasjmby
+      MYSQL_DATABASE: persondb
+      MYSQL_USER: person_user
+      MYSQL_PASSWORD: jluQcSjHX5eDaasjmby
+    ports:
+      - 3306:3306
+  backend:
+    restart: on-failure
+    build: .
+    depends_on:
+      - mysqldb
+    environment:
+      MYSQL_HOST: mysqldb
+      MYSQL_USERNAME: person_user
+      MYSQL_PASSWORD: jluQcSjHX5eDaasjmby
+      MYSQL_DATABASE: persondb
+      MYSQL_PORT: 3306
+    ports:
+      - 8080:8080

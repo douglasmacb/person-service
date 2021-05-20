@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysqldb:3306/persondb
+    username: person_user
+    password: jluQcSjHX5eDaasjmby
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
